@@ -2,7 +2,7 @@
 
 [vLLM](https://docs.vllm.ai/en/latest/) is an open-source, high-throughput inference engine designed to efficiently serve large language models (LLMs) by optimizing memory usage and processing speed. This guide will walk you through how to use vLLM to set up **gpt-oss-20b** or **gpt-oss-120b** on a server to serve gpt-oss as an API for your applications, and even connect it to the Agents SDK.
 
-Note that this guide is meant for server applications with dedicated GPUs like NVIDIA’s H100s. For local inference on consumer GPUs, [check out our Ollama guide](https://cookbook.openai.com/articles/gpt-oss/run-vllm).
+Note that this guide is meant for server applications with dedicated GPUs like NVIDIA’s H100s. For local inference on consumer GPUs, [check out our Ollama guide](https://cookbook.openai.com/articles/gpt-oss/run-locally-ollama).
 
 ## Pick your model
 
@@ -200,7 +200,7 @@ convo = Conversation.from_messages(
 prefill_ids = encoding.render_conversation_for_completion(convo, Role.ASSISTANT)
 
 # Harmony stop tokens (pass to sampler so they won't be included in output)
-stop_token_ids = encoding.stop_tokens_for_assistant_action()
+stop_token_ids = encoding.stop_tokens_for_assistant_actions()
 
 # --- 2) Run vLLM with prefill ---
 llm = LLM(
